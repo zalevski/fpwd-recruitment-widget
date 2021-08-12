@@ -55,13 +55,11 @@ class fpwd_widget extends WP_Widget
 <?php
     }
 }
-
 add_action('widgets_init', function () {
     return register_widget("fpwd_widget");
 });
 
-add_action('wp_ajax_check_payment', 'fpwd_check_payment');
-add_action('wp_ajax_nopriv_check_payment', 'fpwd_check_payment');
+
 function fpwd_check_payment()
 {
     global $wpdb;
@@ -75,4 +73,6 @@ function fpwd_check_payment()
         wp_send_json_error('Error: Invalid data!');
     }
 }
+add_action('wp_ajax_check_payment', 'fpwd_check_payment');
+add_action('wp_ajax_nopriv_check_payment', 'fpwd_check_payment');
 ?>
